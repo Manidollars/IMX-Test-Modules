@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
+  xsi:type="MailApp">
+  <Id>b9b9ad2c-d989-4525-b54c-d5975755c844</Id>
+  <Version>1.0.0.1</Version>
+  <ProviderName>Digitus Information Systems</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="inMailX Protect" />
+  <Description DefaultValue="inMailX Protect." />
+  <IconUrl DefaultValue="https://localhost:3001/assets/inMailX_80.png" />
+  <HighResolutionIconUrl DefaultValue="https://localhost:3001/assets/inMailX_128.png" />
+  <SupportUrl DefaultValue="https://digitus.com.au" />
+  <AppDomains>
+    <AppDomain>localhost:3001</AppDomain>
+    <AppDomain>localhost:7282</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox" />
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.14" />
+    </Sets>
+  </Requirements>
+
+  <FormSettings>
+    <Form xsi:type="ItemEdit">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://digitus.com.au" />
+        <!-- <RequestedHeight>250</RequestedHeight> -->
+      </DesktopSettings>
+      <TabletSettings>
+        <SourceLocation DefaultValue="https://digitus.com.au" />
+        <!-- <RequestedHeight>250</RequestedHeight> -->
+      </TabletSettings>
+      <PhoneSettings>
+        <SourceLocation DefaultValue="https://digitus.com.au" />
+        <!-- <RequestedHeight>250</RequestedHeight> -->
+      </PhoneSettings>
+    </Form>
+  </FormSettings>
+
+
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit" />
+    <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Edit" />
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides"
+    xsi:type="VersionOverridesV1_0">
+
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.14">
+        <bt:Set Name="Mailbox" />
+      </bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="MailHost">
+
+        <DesktopFormFactor>
+          <!-- Location of the Functions that UI-less buttons can trigger (ExecuteFunction Actions). -->
+          <FunctionFile resid="commandsFile" />
+
+          <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+            <OfficeTab id="Message">
+              <Group id="msgComposeGroup">
+                <Label resid="lblinMalXGroupProtect" />
+                <Control xsi:type="Button" id="messageProtect">
+                  <Label resid="lblProtectButton" />
+                  <Supertip>
+                    <Title resid="lblProtectTip" />
+                    <Description resid="lblProtectTipDesc" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="inMailX_icon16" />
+                    <bt:Image size="20" resid="inMailX_icon20" />
+                    <bt:Image size="24" resid="inMailX_icon24" />
+                    <bt:Image size="25" resid="inMailX_icon25" />
+                    <bt:Image size="32" resid="inMailX_icon32" />
+                    <bt:Image size="40" resid="inMailX_icon40" />
+                    <bt:Image size="48" resid="inMailX_icon48" />
+                    <bt:Image size="64" resid="inMailX_icon64" />
+                    <bt:Image size="80" resid="inMailX_icon80" />
+                    <bt:Image size="128" resid="inMailX_icon128" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="messageProtect.URL" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="inMailX_icon16" DefaultValue="https://localhost:3001/assets/inMailX_16.png" />
+        <bt:Image id="inMailX_icon20" DefaultValue="https://localhost:3001/assets/inMailX_20.png" />
+        <bt:Image id="inMailX_icon24" DefaultValue="https://localhost:3001/assets/inMailX_24.png" />
+        <bt:Image id="inMailX_icon25" DefaultValue="https://localhost:3001/assets/inMailX_25.png" />
+        <bt:Image id="inMailX_icon32" DefaultValue="https://localhost:3001/assets/inMailX_32.png" />
+        <bt:Image id="inMailX_icon40" DefaultValue="https://localhost:3001/assets/inMailX_40.png" />
+        <bt:Image id="inMailX_icon48" DefaultValue="https://localhost:3001/assets/inMailX_48.png" />
+        <bt:Image id="inMailX_icon64" DefaultValue="https://localhost:3001/assets/inMailX_64.png" />
+        <bt:Image id="inMailX_icon80" DefaultValue="https://localhost:3001/assets/inMailX_80.png" />
+        <bt:Image id="inMailX_icon128" DefaultValue="https://localhost:3001/assets/inMailX_128.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="commandsFile" DefaultValue="https://localhost:3001/commands.html" />
+        <bt:Url id="messageProtect.URL" DefaultValue="https://localhost:3001/imxProtect.html" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="lblinMalXGroupProtect" DefaultValue="Protect" />
+        <bt:String id="lblProtectButton" DefaultValue="Protect" />
+        <bt:String id="lblProtectTip" DefaultValue="Protect Outgoing Messages" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="lblProtectTipDesc"
+          DefaultValue="Protect outgoing messages by ensuring valid recipients." />
+      </bt:LongStrings>
+    </Resources>
+
+
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1"
+      xsi:type="VersionOverridesV1_1">
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.14">
+          <bt:Set Name="Mailbox" />
+        </bt:Sets>
+      </Requirements>
+      <Hosts>
+        <Host xsi:type="MailHost">
+
+          <Runtimes>
+            <Runtime resid="commandsFile_1">
+              <Override type="javascript" resid="commandsFile_JS" />
+            </Runtime>
+          </Runtimes>
+
+          <DesktopFormFactor>
+            <FunctionFile resid="commandsFile_1" />
+
+            <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+              <OfficeTab id="Message">
+                <Group id="msgComposeGroup">
+                  <Label resid="lblinMailXGroupProtect_1" />
+                  <Control xsi:type="Button" id="messageProtect_1">
+                    <Label resid="lblProtectButton_1" />
+                    <Supertip>
+                      <Title resid="lblProtectTip_1" />
+                      <Description resid="lblProtectTipDesc_1" />
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="inMailX_icon16_1" />
+                      <bt:Image size="20" resid="inMailX_icon20_1" />
+                      <bt:Image size="24" resid="inMailX_icon24_1" />
+                      <bt:Image size="25" resid="inMailX_icon25_1" />
+                      <bt:Image size="32" resid="inMailX_icon32_1" />
+                      <bt:Image size="40" resid="inMailX_icon40_1" />
+                      <bt:Image size="48" resid="inMailX_icon48_1" />
+                      <bt:Image size="64" resid="inMailX_icon64_1" />
+                      <bt:Image size="80" resid="inMailX_icon80_1" />
+                      <bt:Image size="128" resid="inMailX_icon128_1" />
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="messageProtect.URL_1" />
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+
+            <ExtensionPoint xsi:type="LaunchEvent">
+              <LaunchEvents>
+                <LaunchEvent Type="OnMessageRecipientsChanged"
+                  FunctionName="onMessageRecipientsChangedHandler" />
+              </LaunchEvents>
+              <SourceLocation resid="commandsFile_1" />
+            </ExtensionPoint>
+          </DesktopFormFactor>
+
+          <MobileFormFactor>
+            <FunctionFile resid="mobileCommandsFile_1" />
+            <ExtensionPoint xsi:type="LaunchEvent">
+              <LaunchEvents>
+                <LaunchEvent Type="OnMessageRecipientsChanged"
+                  FunctionName="onMessageRecipientsChangedHandler" />
+              </LaunchEvents>
+              <SourceLocation resid="commandsFile_1" />
+            </ExtensionPoint>
+          </MobileFormFactor>
+        </Host>
+      </Hosts>
+      <Resources>
+        <bt:Images>
+          <bt:Image id="inMailX_icon16_1" DefaultValue="https://localhost:3001/assets/inMailX_16.png" />
+          <bt:Image id="inMailX_icon20_1" DefaultValue="https://localhost:3001/assets/inMailX_20.png" />
+          <bt:Image id="inMailX_icon24_1" DefaultValue="https://localhost:3001/assets/inMailX_24.png" />
+          <bt:Image id="inMailX_icon25_1" DefaultValue="https://localhost:3001/assets/inMailX_25.png" />
+          <bt:Image id="inMailX_icon32_1" DefaultValue="https://localhost:3001/assets/inMailX_32.png" />
+          <bt:Image id="inMailX_icon40_1" DefaultValue="https://localhost:3001/assets/inMailX_40.png" />
+          <bt:Image id="inMailX_icon48_1" DefaultValue="https://localhost:3001/assets/inMailX_48.png" />
+          <bt:Image id="inMailX_icon64_1" DefaultValue="https://localhost:3001/assets/inMailX_64.png" />
+          <bt:Image id="inMailX_icon80_1" DefaultValue="https://localhost:3001/assets/inMailX_80.png" />
+          <bt:Image id="inMailX_icon128_1" DefaultValue="https://localhost:3001/assets/inMailX_128.png" />
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="commandsFile_JS" DefaultValue="https://localhost:3001/commands.js" />
+          <bt:Url id="commandsFile_1" DefaultValue="https://localhost:3001/commands.html" />
+          <bt:Url id="mobileCommandsFile_1" DefaultValue="https://localhost:3001/commands.html" />
+          <bt:Url id="messageProtect.URL_1" DefaultValue="https://localhost:3001/imxProtect.html" />
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="lblinMailXGroupProtect_1" DefaultValue="Protect" />
+          <bt:String id="lblProtectButton_1" DefaultValue="Protect" />
+          <bt:String id="lblProtectTip_1" DefaultValue="Protect Outgoing Messages" />
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="lblProtectTipDesc_1"
+            DefaultValue="Protect outgoing messages by ensuring valid recipients." />
+        </bt:LongStrings>
+      </Resources>
+    </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>
